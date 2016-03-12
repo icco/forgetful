@@ -1,11 +1,14 @@
 <html>
   <head>
     <title>Forgetful</title>
-    <link rel="stylesheet" href="/css/tachyons.min.css">
+    <link href="https://npmcdn.com/basscss@8.0.1/css/basscss.min.css" rel="stylesheet">
     <style>
+      .sans-serif {
+        font-family: -apple-system, BlinkMacSystemFont, 'avenir next', avenir, helvetica, 'helvetica neue', Ubuntu, 'segoe ui', arial, sans-serif;
+      }
     </style>
   </head>
-  <body class="ma4 mw7 sans-serif">
+  <body class="m2 mw7 sans-serif">
     <h1>Forgetful</h1>
 
     <form method="post" action="/">
@@ -15,8 +18,9 @@
       <input type="submit" />
     </form>
 
+    <div class="flex flex-wrap">
     <% @all.each do |h| %>
-      <div>
+      <div class="col-4 border"> 
         <blockquote cite="<%= h.url %>"><%= h.highlight %></blockquote>
         <p><%= h.note %></p>
         <p><%= h.created_at %></p>
