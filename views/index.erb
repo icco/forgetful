@@ -5,7 +5,22 @@
     <style>
     </style>
   </head>
-  <body class="mam mw7">
+  <body class="ma4 mw7 sans-serif">
     <h1>Forgetful</h1>
+
+    <form method="post" action="/">
+      <textarea placeholder="highlight" name="highlight"></textarea>
+      <textarea placeholder="notes" name="note"></textarea>
+      <input type="text" placeholder="URI" name="url" />
+      <input type="submit" />
+    </form>
+
+    <% @all.each do |h| %>
+      <div>
+        <blockquote cite="<%= h.url %>"><%= h.highlight %></blockquote>
+        <p><%= h.note %></p>
+        <p><%= h.created_at %></p>
+      </div>
+    <% end %>
   </body>
 </html>

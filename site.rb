@@ -11,7 +11,6 @@ configure do
     :production => ENV['DATABASE_URL']
   }
 
-  p RACK_ENV
   if !RACK_ENV.eql? :development
     # Force HTTPS
     use Rack::SslEnforcer
@@ -43,5 +42,18 @@ configure do
 end
 
 get "/" do
+  @all = Highlight.all
   erb :index
+end
+
+post "/" do
+  p params
+
+  h = Highlight.new
+  h.highlight = params["highlight"]
+  h.note = params["note"]
+  h.url = params["url"]
+  h.save
+
+  redirect "/"
 end
